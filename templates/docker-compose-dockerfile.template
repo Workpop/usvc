@@ -1,0 +1,8 @@
+version: '2'
+services:
+  {{projectName}}:
+    build: .
+    ports:
+    {{#each environment.ports}}
+     - "{{.}}:{{.}}"
+    {{/each}}

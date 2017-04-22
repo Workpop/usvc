@@ -1,0 +1,9 @@
+FROM node:{{nodeVersion}}
+RUN mkdir -p /usr/src/app/dist
+WORKDIR /usr/src/app
+ARG NPM_TOKEN
+COPY .npmrc .npmrc
+COPY package.json /usr/src/app/
+RUN npm install --unsafe-perm
+COPY dist /usr/src/app/dist
+CMD [ "npm", "start" ]

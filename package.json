@@ -1,0 +1,34 @@
+{
+  "name": "@workpop/usvc",
+  "version": "0.0.1",
+  "description": "Tools to generate docker/ECS configs",
+  "main": "index.js",
+  "repository": {},
+  "author": "Gavin Minami",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel ./src --ignore test --out-dir ./lib",
+    "release": "standard-version",
+    "test-init": "babel-node src/init.js",
+    "test-generate-docker": "babel-node src/generateDocker.js"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "lodash": "^4.17.4",
+    "shelljs": "^0.7.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "standard-version": "^4.0.0"
+  },
+  "bin": {
+    "usvc-init": "lib/init.js",
+    "usvc-generate-docker": "lib/generateDocker.js"
+  }
+}

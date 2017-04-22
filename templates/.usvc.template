@@ -1,0 +1,33 @@
+{
+  "projectName": "PLEASE_ENTER_PROJECT_NAME_HERE",
+  "nodeVersion": "7.9.0",
+  "dockerImage": "PLEASE_ENTER_DOCKER_IMAGE_HERE",
+  "environments": [{
+    "name": "local",
+    "type": "dockerfile",
+    "ports": [
+      3000
+    ]
+  }, {
+    "name": "develop",
+    "type": "ecs",
+    "instances": 1,
+    "ports": [
+      3000
+    ]
+  }, {
+    "name": "staging",
+    "type": "ecs",
+    "instances": 2,
+    "ports": [
+      3000
+    ]
+  }, {
+    "name": "prod",
+    "type": "ecs",
+    "instances": 2,
+    "ports": [
+      3000
+    ]
+  }]
+}
