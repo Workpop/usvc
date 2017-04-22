@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { generateAndWrite } from './generate';
 generateAndWrite('.usvc', null, '.usvc');
 

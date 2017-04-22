@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { generateAndWrite, readConfig } from './generate';
 import { each, get, map, omit } from 'lodash';
 const path = require('path');
