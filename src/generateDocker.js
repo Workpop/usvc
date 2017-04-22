@@ -24,8 +24,14 @@ each(environmentConfigs, (environmentConfig) => {
   const environmentName = get(environmentConfig, 'environment.name');
   const environmentType = get(environmentConfig, 'environment.type');
 
+  let outfile = '';
+  if (environmentType === 'dockerfile') {
+    outfile = 'docker-compose.yml';
+  } else {
+    outfile = `docker-compose-${environmentName}.yml`;
+  }
+
   console.log(`Generating configuration for environment ${environmentName}...`);
-  const outfile = `docker-compose-${environmentName}.yml`;
   generateAndWrite(`docker-compose-${environmentType}`, environmentConfig, outfile);
   console.log(`Created ${outfile}`);
 });
