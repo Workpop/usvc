@@ -3,3 +3,4 @@ Dockerfile
 .usvc
 lib/
 node_modules/
+*.log
