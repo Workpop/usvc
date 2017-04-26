@@ -2,6 +2,11 @@
   "projectName": "PLEASE_ENTER_PROJECT_NAME_HERE",
   "nodeVersion": "7.9.0",
   "dockerImage": "PLEASE_ENTER_DOCKER_IMAGE_HERE",
+  "deployPath": "/usr/src/app",
+  "files": [
+    "package.json"
+  ],
+  "startScript": "start",
   "environments": [{
     "name": "local",
     "type": "dockerfile",

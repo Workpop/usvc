@@ -1,9 +1,10 @@
 FROM node:{{nodeVersion}}
-RUN mkdir -p /usr/src/app/dist
-WORKDIR /usr/src/app
+RUN mkdir -p {{deployPath}}
+WORKDIR {{deployPath}}
 ARG NPM_TOKEN
 COPY .npmrc .npmrc
-COPY package.json /usr/src/app/
+{{#each files}}
+COPY {{.}} {{../deployPath}}/{{.}}
+{{/each}}
 RUN npm install --unsafe-perm
-COPY dist /usr/src/app/dist
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "{{startScript}}" ]
