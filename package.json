@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel ./src --ignore test --out-dir ./lib",
-    "release": "standard-version",
+    "release": "npm run build && standard-version",
     "test-init": "babel-node src/init.js",
     "test-docker-build": "babel-node src/dockerBuild.js",
     "test-generate-docker": "babel-node src/generateDocker.js"
