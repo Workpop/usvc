@@ -1,6 +1,6 @@
 {
   "name": "@workpop/usvc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tools to generate docker/ECS configs",
   "main": "index.js",
   "repository": {},
