@@ -12,3 +12,11 @@ services:
       options:
         awslogs-region: us-east-1
         awslogs-group: careers-{{environment.name}}-logs
+{{#each environment.containers}}
+  {{name}}:
+    image: {{image}}
+    ports:
+    {{#each ./ports}}
+     - "{{.}}:{{.}}"
+    {{/each}}
+{{/each}}

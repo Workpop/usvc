@@ -6,3 +6,17 @@ services:
     {{#each environment.ports}}
      - "{{.}}:{{.}}"
     {{/each}}
+{{#if environment.links}}
+    links:
+    {{#each environment.links}}
+     - {{.}}
+    {{/each}}
+{{/if}}
+{{#each environment.containers}}
+  {{name}}:
+    image: {{image}}
+    ports:
+    {{#each ./ports}}
+     - "{{.}}:{{.}}"
+    {{/each}}
+{{/each}}

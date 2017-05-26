@@ -1,10 +1,11 @@
 {
-  "projectName": "{{projectName}}",
+  "projectName": "usvc",
   "nodeVersion": "7.9.0",
   "dockerImage": "PLEASE_ENTER_DOCKER_IMAGE_HERE",
   "deployPath": "/usr/src/app",
   "files": [
-    "package.json"
+    "package.json",
+    "lib"
   ],
   "startScript": "start",
   "environments": [{
@@ -12,7 +13,24 @@
     "type": "dockerfile",
     "ports": [
       3000
-    ]
+    ],
+    "links": [
+      "mongo",
+      "elastic"
+    ],
+    "containers": [{
+      "name": "mongo",
+      "image": "mongo:3.0.4",
+      "ports": [
+        27017
+      ]
+    }, {
+      "name": "elastic",
+      "image": "elasticsearch:2.4.4",
+      "ports": [
+        9200
+      ]
+    }]
   }, {
     "name": "develop",
     "type": "ecs",

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { generateAndWrite, readConfig } from './generate';
 import { each, get, isEmpty, map, omit } from 'lodash';
+import { generateDockerTagFromPackageVersion } from './utils';
+
 const path = require('path');
 const fs = require('fs');
 
@@ -14,9 +16,7 @@ console.log('Created Dockerfile.');
 
 console.log('Generating docker compose configurations...')
 
-const versionNumber = process.env.npm_package_version;
-const dockerTag = versionNumber.replace(/\./g,'_');
-
+const dockerTag = generateDockerTagFromPackageVersion();
 Object.assign(config, {
   dockerTag,
 });
