@@ -1,8 +1,14 @@
 version: '2'
 services:
   {{projectName}}:
-    image: {{dockerImage}}
+    image: {{dockerImage}}:{{dockerTag}}
     ports:
     {{#each environment.ports}}
      - "{{.}}:{{.}}"
     {{/each}}
+    env_file: settings/{{environment.name}}.env
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: us-east-1
+        awslogs-group: careers-{{environment.name}}-logs

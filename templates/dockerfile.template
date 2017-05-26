@@ -6,5 +6,5 @@ COPY .npmrc .npmrc
 {{#each files}}
 COPY {{.}} {{../deployPath}}/{{.}}
 {{/each}}
-RUN npm install --unsafe-perm
+RUN yarn --production
 CMD [ "npm", "run", "{{startScript}}" ]

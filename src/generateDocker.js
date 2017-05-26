@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { generateAndWrite, readConfig } from './generate';
-import { each, get, map, omit } from 'lodash';
+import { each, get, isEmpty, map, omit } from 'lodash';
 const path = require('path');
 const fs = require('fs');
 
@@ -13,9 +13,21 @@ generateAndWrite('dockerfile', config, 'Dockerfile');
 console.log('Created Dockerfile.');
 
 console.log('Generating docker compose configurations...')
+
+const versionNumber = process.env.npm_package_version;
+const dockerTag = versionNumber.replace(/\./g,'_');
+
+Object.assign(config, {
+  dockerTag,
+});
+
+const dockerImage = get(config, 'dockerImage');
+
 const environmentConfigs = map(get(config, 'environments'), (environment) => {
+  const dockerImageOverride = get(environment, 'dockerImageOverride');
   return {
     ...omit(config, 'environments'),
+    dockerImage: isEmpty(dockerImageOverride) ? dockerImage : dockerImageOverride,
     environment,
   };
 });
@@ -32,6 +44,9 @@ each(environmentConfigs, (environmentConfig) => {
   }
 
   console.log(`Generating configuration for environment ${environmentName}...`);
+  console.log('Environment config:');
+  console.log(JSON.stringify(environmentConfig, null, '  '));
   generateAndWrite(`docker-compose-${environmentType}`, environmentConfig, outfile);
   console.log(`Created ${outfile}`);
+  console.log('==============================================');
 });

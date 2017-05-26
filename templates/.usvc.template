@@ -17,13 +17,23 @@
     "name": "develop",
     "type": "ecs",
     "instances": 1,
+    "dockerImageOverride": "",
     "ports": [
       3000
     ]
   }, {
     "name": "staging",
     "type": "ecs",
-    "instances": 2,
+    "instances": 1,
+    "dockerImageOverride": "",
+    "ports": [
+      3000
+    ]
+  }, {
+    "name": "demo",
+    "type": "ecs",
+    "instances": 1,
+    "dockerImageOverride": "",
     "ports": [
       3000
     ]
@@ -31,6 +41,7 @@
     "name": "prod",
     "type": "ecs",
     "instances": 2,
+    "dockerImageOverride": "",
     "ports": [
       3000
     ]
